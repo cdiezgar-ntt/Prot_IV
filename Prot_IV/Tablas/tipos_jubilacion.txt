@@ -1,0 +1,3 @@
+TIPO DE JUBILIACION;-TIPO JU-
+P;Parcial
+ ;Otros

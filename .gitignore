@@ -1,0 +1,8 @@
+# Eclipse
+Prot_IV/.settings/
+Prot_IV/.classpath
+Prot_IV/.project
+
+# Build output
+Prot_IV/bin/
+Prot_IV/target/

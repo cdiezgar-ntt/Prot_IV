@@ -1,0 +1,44 @@
+CODIGO PARTE CUERPO;-PARTE CUERPO DAÑADA-
+00;Parte del cuerpo afectada, sin especificar.  
+01;Mano  
+02;Pie  
+10;Cabeza, no descrita con más detalle.  
+11;Cabeza (Caput), cerebro, nervios craneanos y vasos cerebrales.  
+12;Zona facial.  
+13;Ojo(s).  
+14;Oreja(s).  
+15;Dientes.  
+18;Cabeza, múltiples partes afectadas.  
+19;Cabeza, otras partes no mencionadas anteriormente.  
+20;Cuello, incluida la columna y las vértebras cervicales.  
+21;Cuello, incluida la columna y las vértebras del cuello.  
+29;Cuello, otras partes no mencionadas anteriormente.  
+30;Espalda, incluida la columna y las vértebras dorsolumbares.  
+31;Espalda, incluida la columna y las vértebras de la espalda.  
+39;Espalda, otras partes no mencionadas anteriormente.  
+40;Tronco y órganos, no descritos con más detalle.  
+41;Caja torácica, costillas, incluidos omoplatos y articulaciones acromioclaviculares.  
+42;Región torácica, incluidos sus órganos.  
+43;Región pélvica y abdominal, incluidos sus órganos.  
+48;Tronco, múltiples partes afectadas.  
+49;Tronco, otras partes no mencionadas anteriormente.  
+50;Extremidades superiores, no descritas con más detalle.  
+51;Hombro y articulaciones del húmero.  
+52;Brazo, incluida la articulación del cúbito.  
+53;Mano.  
+54;Dedo(s).  
+55;Muñeca.  
+58;Extremidades superiores, múltiples partes afectadas.  
+59;Extremidades superiores, otras partes no mencionadas anteriormente.  
+60;Extremidades inferiores, no descritas con más detalle.  
+61;Cadera y articulación de la cadera.  
+62;Pierna, incluida la rodilla.  
+63;Maléolo.  
+64;Pie.  
+65;Dedo(s) del pie.  
+68;Extremidades inferiores, múltiples partes afectadas.  
+69;Extremidades inferiores, otras partes no mencionadas anteriormente.  
+70;Todo el cuerpo y múltiples partes, no descritas con más detalle.  
+71;Todo el cuerpo (efectos sistémicos).  
+78;Múltiples partes del cuerpo afectadas.  
+99;Otras partes del cuerpo no mencionadas anteriormente.  

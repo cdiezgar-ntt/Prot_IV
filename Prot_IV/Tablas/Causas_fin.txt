@@ -1,0 +1,19 @@
+CODIGO CAUSA;-CAUSA FIN IT-
+90;Alta médica notificada
+91;Alta médica por presentación de ley de medidas, por disconformidad con el alta
+92;Alta médica por nueva baja, tras una resolución de alta
+35;Alta médica en segundas y siguientes RESOLUCIÓN es art.170
+85;Alta por propuesta de IP en primera resolución
+86;Alta por propuesta de IP en prórroga de IT más de 365 días
+87;Alta por propuesta de IP tras agotamiento de la prórroga de IT
+14;Finalización por Jubilación
+37;Finalización de expediente sin efectos económicas art.174
+20;Inicio Nacimiento y Cuidado del Menor comunicada por el SPS
+44;FIN DE IT POR INICIO DE NACIMIENTO Y CUIDADO DE MENOR
+45;Fin de IT por inicio Paternidad
+50;INICIO DE NACIMIENTO Y CUIDADO DE MENOR (INSS +12 MESES)
+26;NO ALTA EN LA EMPRESA
+12;Aprobada Invalidez Permanente
+13;Denegada Invalidez Permanente
+34;Finalizacion de expediente sin efectos economicos (articulo 170)
+47;Anulación del subsidio según el artículo 175 LGSS. Comunica la anulación del subsidio
