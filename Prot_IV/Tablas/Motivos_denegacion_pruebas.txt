@@ -1,0 +1,3 @@
+CODIGO DENEGACION;-MOTIVO DENEGACIÓN-
+1;Motivos clínicos
+2;Incapacidad para realizar la prueba
