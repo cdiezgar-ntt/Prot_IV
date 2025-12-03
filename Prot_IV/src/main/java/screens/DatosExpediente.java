@@ -46,6 +46,7 @@ public class DatosExpediente extends JPanel {
 
 		JPanel panelGrid = new JPanel(new GridLayout(Campos.sizeCampos + 2, 2));
 		JScrollPane scroll = new JScrollPane(panelGrid);
+		scroll.getVerticalScrollBar().setUnitIncrement(20);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 

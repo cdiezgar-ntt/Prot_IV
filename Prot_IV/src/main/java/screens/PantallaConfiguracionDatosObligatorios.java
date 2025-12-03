@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -60,12 +61,12 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 
 		});
 		// Panel superior para los combos y el campo de texto
-		JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 20));
+		JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 20));
 
 		// Combo para tipo de expediente
 		topPanel.add(new JLabel("Tipo de Expediente:"));
 		tipoExpedienteCombo = new JComboBox<String>();
-		tipoExpedienteCombo.setPreferredSize(new Dimension(150, 20));
+		tipoExpedienteCombo.setPreferredSize(new Dimension(200, 20));
 		comboExpedientes = new Ficheros().leerTabla("Tipos_expediente.txt", ";");
 		for (int i = 0; i < comboExpedientes.size(); i++) {
 			tipoExpedienteCombo.addItem(comboExpedientes.get(i)[0]);
@@ -100,7 +101,7 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 		// Combo para tipo de comunicado
 		topPanel.add(new JLabel("Tipo de Comunicado:"));
 		tipoComunicadoCombo = new JComboBox<String>();
-		tipoComunicadoCombo.setPreferredSize(new Dimension(100, 20));
+		tipoComunicadoCombo.setPreferredSize(new Dimension(200, 20));
 		comboComunicados = new Ficheros().leerTabla("Tipos_comunicado.txt", ";");
 		topPanel.add(tipoComunicadoCombo);
 
@@ -115,6 +116,7 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 					camposPanel = null;
 					JPanel newCamposPanel = new JPanel();
 					JScrollPane scrollPane = new JScrollPane(newCamposPanel);
+					scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 					camposPanel = newCamposPanel;
 					removeAll();
 					add(topPanel, BorderLayout.NORTH);
@@ -163,19 +165,23 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 
 							for (int i = 1; i < campos.size(); i++) {
 								
-								JPanel panel_i = new JPanel(new FlowLayout(FlowLayout.CENTER));
+								JPanel panel_i = new JPanel(new FlowLayout(FlowLayout.LEFT,20,10));
 								
 								String id = listaCampos.get(i)[0];
 								String descripcion = listaCampos.get(i)[1];
 
 								//gbc.gridx = 0;
 								//gbc.gridy = i;
-
+								
 								JLabel idLabel = new JLabel(id);
-								idLabel.setPreferredSize(new Dimension(20, 20));
-								JPanel campoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+								idLabel.setPreferredSize(new Dimension(40, 20));
 								//campoPanel.add(idLabel);
 								panel_i.add(idLabel);
+								idLabel.setVisible(false);
+
+								JCheckBox obligatorioBtn = new JCheckBox("");
+								//campoPanel.add(obligatorioBtn);
+								panel_i.add(obligatorioBtn);
 								
 								//gbc.gridx = 1;
 								//gbc.gridy = i;
@@ -187,24 +193,23 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 								panel_i.add(descripcionLabel);
 								
 								//gbc.gridx = 2;
-								JRadioButton obligatorioBtn = new JRadioButton("Obligatorio");
-								//campoPanel.add(obligatorioBtn);
-								panel_i.add(obligatorioBtn);
+
 
 								//gbc.gridx = 3;
-								JRadioButton noObligatorioBtn = new JRadioButton("No obligatorio");
-								//campoPanel.add(noObligatorioBtn);
-								panel_i.add(noObligatorioBtn);
+//								JRadioButton noObligatorioBtn = new JRadioButton("No obligatorio");
+//								//campoPanel.add(noObligatorioBtn);
+//								panel_i.add(noObligatorioBtn);
 
-								ButtonGroup group = new ButtonGroup();
-								group.add(obligatorioBtn);
-								group.add(noObligatorioBtn);
+//								ButtonGroup group = new ButtonGroup();
+//								group.add(obligatorioBtn);
+//								group.add(noObligatorioBtn);
 
 								if (obligatorios.contains(i)) {
 									obligatorioBtn.setSelected(true);
-								} else {
-									noObligatorioBtn.setSelected(true);
-								}
+								} 
+//								else {
+//									noObligatorioBtn.setSelected(true);
+//								}
 
 								//newCamposPanel.add(campoPanel, gbc);
 								newCamposPanel.add(panel_i);
@@ -217,6 +222,7 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 							try {
 								JPanel newCamposPanel = get(); // Obtener el panel construido en segundo plano
 								JScrollPane scrollPane = new JScrollPane(newCamposPanel);
+								scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 								camposPanel = newCamposPanel;
 								removeAll();
 								add(topPanel, BorderLayout.NORTH);
@@ -242,7 +248,7 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 
 		// Campo de texto para filtrar
 		topPanel.add(new JLabel("Descripción del campo:"));
-		filtroCampoText = new JTextField(50);
+		filtroCampoText = new JTextField(20);
 		topPanel.add(filtroCampoText);
 
 		add(topPanel, BorderLayout.NORTH);
@@ -337,22 +343,22 @@ public class PantallaConfiguracionDatosObligatorios extends JPanel {
 
 				// Buscar los JRadioButton dentro del panel
 				for (Component subComp : panel.getComponents()) {
-					if (subComp instanceof JRadioButton) {
-						JRadioButton radioButton = (JRadioButton) subComp;
-						if (radioButton.getText().equals("Obligatorio")) {
-							obligatorioBtn = radioButton;
+					if (subComp instanceof JCheckBox) {
+						JCheckBox radioButton = (JCheckBox) subComp;
+						if (radioButton.isSelected()) {
+							obligatorios += labelId.getText() + "-";
 						}
 					}
 				}
 
-				if (obligatorioBtn != null) {
-					// Obtener el estado de los JRadioButton
-					boolean esObligatorio = obligatorioBtn.isSelected();
-
-					if (esObligatorio) {
-						obligatorios += labelId.getText() + "-";
-					}
-				}
+//				if (obligatorioBtn != null) {
+//					// Obtener el estado de los JRadioButton
+//					boolean esObligatorio = obligatorioBtn.isSelected();
+//
+//					if (esObligatorio) {
+//						obligatorios += labelId.getText() + "-";
+//					}
+//				}
 			}
 		}
 
