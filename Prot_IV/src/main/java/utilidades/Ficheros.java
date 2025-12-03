@@ -165,6 +165,17 @@ public class Ficheros {
 		return devuelveDatos;
 	}
 	
+	public boolean guardarTablaConfiguracion(String tabla, List<List<String>> datos) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("Tablas/" +tabla + ".txt"))) {
+			for (List<String> rowData : datos) {
+				writer.write(String.join(";", rowData));
+				writer.newLine();
+			}
+			return true;
+		} catch (IOException e) {
+			return false;
+		}
+	}
 
 	
 	

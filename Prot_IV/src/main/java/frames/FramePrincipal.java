@@ -3,6 +3,8 @@ package frames;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 
 import javax.swing.*;
@@ -34,7 +36,7 @@ public class FramePrincipal extends JFrame {
 		tablasPanel = new JPanel();
 		tablasPanel.setLayout(new BorderLayout());
     	panelBotones = new JPanel();
-    	panelBotones.setLayout(new BoxLayout(panelBotones,BoxLayout.Y_AXIS));
+    	//panelBotones.setLayout(new BoxLayout(panelBotones,BoxLayout.Y_AXIS));
     	panelBotones2 = new JPanel();
     	panelBotones2.setLayout(new BoxLayout(panelBotones2,BoxLayout.Y_AXIS));
     	
@@ -79,36 +81,34 @@ public class FramePrincipal extends JFrame {
             return;
         }
         
+        JComboBox <String> comboTablas = new JComboBox <String> ();
+        
         //Creacion de los botones
         for (File fichero : ficheros) {
         	
-            panelBotones.add(Box.createRigidArea(new Dimension(0, 10)));
         	
             String nombreFichero = fichero.getName();
             String nombreSinExtension = nombreFichero.substring(0, nombreFichero.length() - 4);
 
-            // Crear un botón para cada fichero
-            JButton boton = new JButton(nombreSinExtension);
-            boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+              comboTablas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        	
+        	comboTablas.addItem(nombreSinExtension);
             
-            boton.setPreferredSize(buttonSize);
-            boton.setMaximumSize(buttonSize);
-            boton.setMinimumSize(buttonSize);
-            
-            boton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                	
-    				showPanel(nombreSinExtension);
-                }
+        	comboTablas.addItemListener(new ItemListener() {
+
+				@Override
+				public void itemStateChanged(ItemEvent arg0) {
+    				showPanel(arg0.getItem().toString());
+					
+				}
             });
 
             // Añadir el botón al frame
-            panelBotones.add(boton);
-            
-
+        	
         }
         
+        panelBotones.add(comboTablas);
         
         menuPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK)); // Línea vertical sólida a la derecha
         tablasPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK)); // Línea vertical sólida a la izquierda
